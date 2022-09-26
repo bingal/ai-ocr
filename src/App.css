@@ -36,3 +36,107 @@
     transform: rotate(360deg);
   }
 }
+
+
+#root,
+body,
+html {
+  height: calc(100vh);
+}
+.layout-basic-app {
+  /* height: 100%; */
+  height: calc(100vh);
+}
+
+
+.layout-basic-app .arco-layout-header,
+.layout-basic-app .arco-layout-footer,
+.layout-basic-app .arco-layout-sider,
+.layout-basic-app .arco-layout-sider-children,
+.layout-basic-app .arco-layout-content {
+  color: var(--color-white);
+  text-align: center;
+  font-stretch: condensed;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.layout-basic-app .left-side-toolbar{
+  padding:10px;
+}
+
+.layout-basic-app .left-side-content {
+  height: calc(100vh - 144px);
+  overflow:scroll;
+  padding:0px 10px 0px 10px;
+}
+
+.layout-basic-app .left-side-divider {
+  height: 0px;
+  margin: 0;
+}
+
+.layout-basic-app .arco-layout-header,
+.layout-basic-app .arco-layout-footer {
+  height: 64px;
+  background-color: var(--color-primary-light-4);
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.layout-basic-app .arco-layout-sider {
+  /* padding-left: 10px;
+  padding-right: 16px!important; */
+  /* background-color: var(--color-primary-light-3); */
+  background: var(--color-bg-3);
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+.layout-basic-app .arco-layout-content {
+  /* background-color: rgb(var(--arcoblue-6)); */
+  background: var(--color-bg-3);
+  text-align: left;
+  /* height: calc(100vh); */
+  /* padding: 10px; */
+}
+
+.layout-basic-app .arco-layout-sider-children{
+  text-align: left;
+}
+
+.layout-basic-app .content-textarea {
+  width: 100%;
+  height: calc(100vh - 20px);
+}
+
+.layout-basic-app .arco-upload-trigger-drag {
+  padding:10px 0 ;
+}
+.layout-basic-app .arco-upload-trigger-drag .arco-icon-plus {
+  margin-bottom: 0px;
+}
+
+.layout-basic-app .card-selected {
+  background-color: var(--color-primary-light-4);
+}
+
+.layout-basic-app .card-state-icon, .layout-basic-app .ocr-content {
+  cursor:default;
+}
+
+.layout-basic-app .previewCard {
+  height: calc(100vh - 20px);
+}
+
+.layout-basic-app .previewImage {
+  height: calc(100vh - 20px);
+  overflow:hidden;
+}
+
+.layout-basic-app .previewImage img {
+  max-width: 100%;
+  max-height: 100%;
+}

@@ -1,27 +1,58 @@
 {
   "name": "ocr_app",
+  "productName": "AI-OCR",
   "version": "0.1.0",
   "private": true,
+  "main": "main.js",
+  "homepage": ".",
+  "build": {
+    "productName": "AI-OCR",
+    "appId": "com.bingal.ai-ocr",
+    "mac": {
+      "icon": "./logo.icns"
+    },
+    "win": {
+      "icon": "./logo.ico"
+    },
+    "linux": {
+      "icon": "./logo.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "guid": "8E6ECC72-54CE-23BD-541E-C384A5FF7D54",
+      "perMachine": true,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "./logo.ico",
+      "uninstallerIcon": "./logo.ico",
+      "installerHeaderIcon": "./logo.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "8E6ECC72-54CE-23BD-541E-C384A5FF7D54"
+    }
+  },
   "dependencies": {
+    "@arco-design/web-react": "^2.40.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "Buffer": "^0.0.0",
+    "nanoid": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "thrift": "^0.17.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "eject": "react-scripts eject",
+    "estart": "electron .",
+    "build-python": "ppocr_app/bin/pyinstaller ./py-service/ocr_server.py --clean",
+    "pack-app": "./node_modules/.bin/electron-packager . --overwrite --ignore=ppocr_app --ignore=thrift-src --ignore=thrift_ocr_js-bak --ignore=out --ignore=public --ignore=src --ignore=py-service --ignore=dist --out ./out --prune --icon=logo.icns && cp -R ./dist/ocr_server \"./out/AI-OCR-darwin-x64/AI-OCR.app/Contents/Resources/app\"",
+    "7z": "7z a ai-ocr.7z ./out/AI-OCR-darwin-x64/AI-OCR.app"
   },
   "browserslist": {
     "production": [
@@ -34,5 +65,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "electron": "^20.1.4",
+    "electron-packager": "^16.0.0"
   }
 }

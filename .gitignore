@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+dist
+py-service/paddle_model
+thrift-src/thrift_ocr_py
+thrift-src/thrift_ocr_js
+thrift-src/gen-js
+out
