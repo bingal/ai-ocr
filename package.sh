@@ -1,9 +1,9 @@
-export PADDLEOCR_PATH=/Users/ben/Desktop/nodejs/ocr_app/ppocr_app/lib/python3.8/site-packages
-export CODE_PATH=/Users/ben/Desktop/nodejs/ocr_app/py-service
+export SITE_PACKAGES_PATH=$(pwd)/aiocr-env/lib/python3.8/site-packages
+export CODE_PATH=$(pwd)/py-service
 
 
-# ppocr_app/bin/pyinstaller --clean -y ocr_server.spec
-ppocr_app/bin/pyinstaller --clean -y -D --clean \
+# aiocr-env/bin/pyinstaller --clean -y ocr_server.spec
+aiocr-env/bin/pyinstaller --clean -y -D --clean \
     --exclude-module matplotlib \
 	--exclude-module pytz \
 	./py-service/ocr_server.py \
