@@ -51,7 +51,8 @@
     "eject": "react-scripts eject",
     "estart": "electron .",
     "build-python": "aiocr-env/bin/pyinstaller ./py-service/ocr_server.py --clean",
-    "pack-app": "./node_modules/.bin/electron-packager . --overwrite --ignore=aiocr-env --ignore=thrift-src --ignore=thrift_ocr_js-bak --ignore=out --ignore=public --ignore=src --ignore=py-service --ignore=dist --out ./out --prune --icon=logo.icns && cp -R ./dist/ocr_server \"./out/AI-OCR-darwin-x64/AI-OCR.app/Contents/Resources/app\"",
+    "pack-mac-app": "./node_modules/.bin/electron-packager . --overwrite --ignore=aiocr-env --ignore=thrift-src --ignore=out --ignore=public --ignore=src --ignore=py-service --ignore=dist --out ./out --prune --icon=logo.icns && cp -R ./dist/ocr_server ./out/AI-OCR-darwin-x64/AI-OCR.app/Contents/Resources/app",
+    "pack-win-app": "./node_modules/.bin/electron-packager . --overwrite --ignore=aiocr-env --ignore=thrift-src --ignore=out --ignore=public --ignore=src --ignore=py-service --ignore=dist --out ./out --prune --icon=logo.ico && xcopy .\\dist\\ocr_server .\\out\\AI-OCR-win32-x64\\resources\\app\\ocr_server /s /e /i /y",
     "7z": "7z a ai-ocr.7z ./out/AI-OCR-darwin-x64/AI-OCR.app"
   },
   "browserslist": {

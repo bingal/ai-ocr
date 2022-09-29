@@ -27,3 +27,6 @@ thrift-src/thrift_ocr_py
 thrift-src/thrift_ocr_js
 thrift-src/gen-js
 out
+ocr_server.spec
+py-service/thrift_ocr_py/__pycache__/
+py-service/thrift_ocr_py/ocr/__pycache__/
