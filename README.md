@@ -36,5 +36,5 @@ ai-ocr
 
 ### 编译和打包说明（mac和windows）
 
-[AI-OCR编译和打包过程（mac版）](/package-mac.md){:target="_blank"}
-[AI-OCR编译和打包过程（mwindows版）](/package-win.md){:target="_blank"}
+[AI-OCR编译和打包过程（mac版）](/package-mac.md)
+[AI-OCR编译和打包过程（mwindows版）](/package-win.md)
