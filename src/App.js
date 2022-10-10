@@ -3,15 +3,62 @@ import "@arco-design/web-react/dist/css/arco.css";
 import { useState, useReducer, useRef, useEffect } from "react";
 import { Card, Space, Layout, Divider, Avatar, Input, Upload, Message, Grid, Image } from "@arco-design/web-react";
 import { IconCheck, IconClose, IconLoading } from '@arco-design/web-react/icon';
-
 const nanoid = require("nanoid");
+const clipboard = window.require('electron').clipboard;
+const remote = window.require('@electron/remote');
+const Menu = remote.Menu;
+const MenuItem = remote.MenuItem;
 
-// const Header = Layout.Header;
+
 const Content = Layout.Content;
 const Sider = Layout.Sider;
 const TextArea = Input.TextArea;
 const Row = Grid.Row;
 const Col = Grid.Col;
+
+// 选中文本右键菜单增加复制功能
+function handleContextMenu(e) {
+  e.preventDefault()
+  let menu = new Menu()
+
+  let flag = false // menu中是否有菜单项，true有，false没有
+  const selectStr = getSelection() // 选中的内容
+  const text = e.target.innerText || '' // 目标标签的innerText
+  const value = e.target.value || '' // 目标标签的value
+
+  if (selectStr) { // 如果有选中内容
+    flag = true
+    // 在 选中的元素或者输入框 上面点右键，这样在选中后点别处就不会出现右键复制菜单
+    if (text.indexOf(selectStr) !== -1 || value.indexOf(selectStr) !== -1) menu.append(new MenuItem({ label: '复制', click: copyString }))
+  }
+
+  // menu中有菜单项 且（有选中内容 或 剪贴板中有内容）
+  if (flag && (getSelection() || str)) {
+    menu.popup(remote.getCurrentWindow())
+  }
+}
+
+// 写入剪贴板方法
+function copyString() {
+  const str = getSelection() // 获取选中内容
+  clipboard.writeText(str) // 写入剪贴板
+}
+// 获取选中内容
+function getSelection() {
+  var text = ''
+  if (window.getSelection) { // 除IE9以下 之外的浏览器
+    text = window.getSelection().toString()
+  } else if (document.selection && document.selection.type !== 'Control') { //IE9以下，可不考虑
+    text = document.selection.createRange().text
+  }
+  if (text) {
+    return text
+  }
+}
+
+
+
+
 
 // var thrift = require('thrift');
 // // 调用win10下thrift命令自动生成的依赖包
@@ -108,9 +155,6 @@ function App() {
           if (item.id === action.payload.id) {
             if (item.id === selectCardId && action.payload.state === 1) {
               setTextareaText(action.payload.text)
-              // if (action.payload.img_data){
-              //   setSelectImage(action.payload.img_data)
-              // }
             }
             return { ...item, ...action.payload }
           }
@@ -142,7 +186,14 @@ function App() {
   useEffect(() => {
     //给组件添加监听粘贴事件
     pasteImageRef.current?.addEventListener('paste', pasteHandler);
+    window.addEventListener('contextmenu', handleContextMenu, false);
+    return () => {
+      // 组件卸载移除事件监听
+      document.removeEventListener('contextmenu', handleContextMenu);
+    };
   }, []);
+
+
 
   const startOcr = (file) => {
     if (thriftClient==null){

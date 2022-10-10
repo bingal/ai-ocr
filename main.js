@@ -1,5 +1,7 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow } = require('electron')
+const remote = require("@electron/remote/main")
+remote.initialize()
 // const url = require('url')
 const path = require('path')
 
@@ -23,7 +25,8 @@ function createWindow() {
 
     // and load the index.html of the app.
     if (!app.isPackaged) {
-        mainWindow.loadURL('http://localhost:3000')
+        // mainWindow.loadURL('http://localhost:3000')
+        mainWindow.loadFile(path.join(__dirname, 'build/index.html'))
     } else {
         mainWindow.loadFile(path.join(__dirname, 'build/index.html'))
     }
@@ -39,6 +42,7 @@ function createWindow() {
     if (!app.isPackaged) {
         mainWindow.webContents.openDevTools()
     }
+    remote.enable(mainWindow.webContents)
 }
 
 // This method will be called when Electron has finished
@@ -52,6 +56,7 @@ app.whenReady().then(() => {
         // dock icon is clicked and there are no other windows open.
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })
+    
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common

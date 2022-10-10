@@ -46,7 +46,7 @@ class Ocr_handler:
 
 
 if __name__ == "__main__":
-    port = 8000
+    port = 8264
     ip = "127.0.0.1"
     # 创建服务端
     handler = Ocr_handler()  # 自定义类
@@ -59,6 +59,6 @@ if __name__ == "__main__":
     pfactory = TBinaryProtocol.TBinaryProtocolFactory()
     # 创建服务端
     server = TServer.TThreadedServer(processor, transport, tfactory, pfactory)
-    print("start server in python")
+    print(f"start server on {port}")
     server.serve()
     print("Done")

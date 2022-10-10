@@ -33,10 +33,12 @@
   },
   "dependencies": {
     "@arco-design/web-react": "^2.40.0",
+    "@electron/remote": "^2.0.8",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "Buffer": "^0.0.0",
+    "fs": "^0.0.1-security",
     "nanoid": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -50,10 +52,12 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "estart": "electron .",
-    "build-python": "aiocr-env/bin/pyinstaller ./py-service/ocr_server.py --clean",
-    "pack-mac-app": "./node_modules/.bin/electron-packager . --overwrite --ignore=aiocr-env --ignore=thrift-src --ignore=out --ignore=public --ignore=src --ignore=py-service --ignore=dist --out ./out --prune --icon=logo.icns && cp -R ./dist/ocr_server ./out/AI-OCR-darwin-x64/AI-OCR.app/Contents/Resources/app",
-    "pack-win-app": ".\\node_modules\\.bin\\electron-packager . --overwrite --ignore=aiocr-env --ignore=thrift-src --ignore=out --ignore=public --ignore=src --ignore=py-service --ignore=dist --out .\\out --prune --icon=logo.ico && xcopy .\\dist\\ocr_server .\\out\\AI-OCR-win32-x64\\resources\\app\\ocr_server /s /e /i /y",
-    "7z": "7z a ai-ocr.7z ./out/AI-OCR-darwin-x64/AI-OCR.app"
+    "build-py-mac": "sh ./package-pyservice-mac.sh",
+    "build-py-win": "package-pyservice-win.bat",
+    "pack-app-mac": "./node_modules/.bin/electron-packager . --overwrite --ignore='\\.md|\\.spec|\\.bat|\\.sh' --ignore='^/aiocr-env' --ignore='^/thrift-src' --ignore='^/out' --ignore=7zr.exe --ignore=ai-ocr.7z --ignore='^/public' --ignore='^/src' --ignore='^/py-service' --ignore='^/dist' --ignore='\\.DS_Store' --ignore='^/.git' --ignore='\\.gitignore' --out ./out --prune --icon=logo.icns && cp -R ./dist/ocr_server ./out/AI-OCR-darwin-x64/AI-OCR.app/Contents/Resources/app",
+    "pack-app-win": ".\\node_modules\\.bin\\electron-packager . --asar --overwrite --ignore=aiocr-env --ignore=thrift-src --ignore=out --ignore=7zr.exe --ignore=ai-ocr.7z --ignore=public --ignore=src --ignore=py-service --ignore=dist --out .\\out --prune --icon=logo.ico && xcopy .\\dist\\ocr_server .\\out\\AI-OCR-win32-x64\\resources\\app\\ocr_server /s /e /i /y",
+    "7z-mac": "7z a ai-ocr.7z ./out/AI-OCR-darwin-x64/AI-OCR.app -t7z -mx=9",
+    "7z-win": ".\\7zr.exe a ai-ocr.7z .\\out\\AI-OCR-darwin-x64/AI-OCR.app -t7z -mx=9"
   },
   "browserslist": {
     "production": [
