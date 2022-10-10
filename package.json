@@ -55,7 +55,7 @@
     "build-py-mac": "sh ./package-pyservice-mac.sh",
     "build-py-win": "package-pyservice-win.bat",
     "pack-app-mac": "./node_modules/.bin/electron-packager . --overwrite --ignore='\\.md|\\.spec|\\.bat|\\.sh' --ignore='^/aiocr-env' --ignore='^/thrift-src' --ignore='^/out' --ignore=7zr.exe --ignore=ai-ocr.7z --ignore='^/public' --ignore='^/src' --ignore='^/py-service' --ignore='^/dist' --ignore='\\.DS_Store' --ignore='^/.git' --ignore='\\.gitignore' --out ./out --prune --icon=logo.icns && cp -R ./dist/ocr_server ./out/AI-OCR-darwin-x64/AI-OCR.app/Contents/Resources/app",
-    "pack-app-win": ".\\node_modules\\.bin\\electron-packager . --asar --overwrite --ignore=aiocr-env --ignore=thrift-src --ignore=out --ignore=7zr.exe --ignore=ai-ocr.7z --ignore=public --ignore=src --ignore=py-service --ignore=dist --out .\\out --prune --icon=logo.ico && xcopy .\\dist\\ocr_server .\\out\\AI-OCR-win32-x64\\resources\\app\\ocr_server /s /e /i /y",
+    "pack-app-win": ".\\node_modules\\.bin\\electron-packager . --overwrite --ignore='\\.md|\\.spec|\\.bat|\\.sh' --ignore='^/aiocr-env' --ignore='^/thrift-src' --ignore='^/out' --ignore=7zr.exe --ignore=ai-ocr.7z --ignore='^/public' --ignore='^/src' --ignore='^/py-service' --ignore='^/dist' --ignore='^/.git' --ignore='\\.gitignore' --out .\\out --prune --icon=logo.ico && xcopy .\\dist\\ocr_server .\\out\\AI-OCR-win32-x64\\resources\\app\\ocr_server /s /e /i /y",
     "7z-mac": "7z a ai-ocr.7z ./out/AI-OCR-darwin-x64/AI-OCR.app -t7z -mx=9",
     "7z-win": ".\\7zr.exe a ai-ocr.7z .\\out\\AI-OCR-darwin-x64/AI-OCR.app -t7z -mx=9"
   },
