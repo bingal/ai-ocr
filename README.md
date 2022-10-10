@@ -26,16 +26,26 @@ ai-ocr
 ├─preload.js                   - electron渲染进程预加载脚本，定义主题
 ```
 
-### 软件界面
+### 3. 软件界面
 
 ![世界时区分布图](/assets/1665395619954.jpg#pic_center)
 
-### 功能简介
+### 4. 功能简介
 
 支持批量添加图片、拖动图片到软件界面、粘贴剪贴板的图片进行识别
 
-### 编译和打包说明（mac和windows）
+### 5. 编译和打包说明（mac和windows）
 
 [AI-OCR编译和打包过程（mac版）](/package-mac.md)
 
 [AI-OCR编译和打包过程（mwindows版）](/package-win.md)
+
+### 6. 软件下载
+
+链接：https://pan.baidu.com/s/1TPOs2qVnY9fpkfEGZnA10Q?pwd=nfxu 
+提取码：nfxu
+
+
+### 如果本软件对你您有用，请多多支持，这将使我有更有动力不断完善，谢谢！
+
+![捐赠收款码](/assets/qrcode-receiving.jpg#pic_center)
