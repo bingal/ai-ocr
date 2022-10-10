@@ -2,7 +2,6 @@ export SITE_PACKAGES_PATH=$(pwd)/aiocr-env/lib/python3.8/site-packages
 export CODE_PATH=$(pwd)/py-service
 
 
-# aiocr-env/bin/pyinstaller --clean -y ocr_server.spec
 aiocr-env/bin/pyinstaller --clean -y -D --clean \
     --exclude-module matplotlib \
 	--exclude-module pytz \

@@ -30,3 +30,4 @@ out
 ocr_server.spec
 py-service/thrift_ocr_py/__pycache__/
 py-service/thrift_ocr_py/ocr/__pycache__/
+ai-ocr-darwin-x64.7z

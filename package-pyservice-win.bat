@@ -2,7 +2,6 @@ set SITE_PACKAGES_PATH=%cd%\aiocr-env\Lib\site-packages
 set CODE_PATH=%cd%\py-service
 
 
-:: aiocr-env\Scripts\pyinstaller --clean -y ocr_server.spec
 aiocr-env\Scripts\pyinstaller --clean -y -D --clean ^
 --exclude-module matplotlib ^
 --exclude-module pytz ^
