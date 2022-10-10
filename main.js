@@ -1,8 +1,9 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
+const { app, Menu, BrowserWindow } = require('electron')
 const remote = require("@electron/remote/main")
 remote.initialize()
-// const url = require('url')
+Menu.setApplicationMenu(null)
+
 const path = require('path')
 
 function createWindow() {
@@ -25,8 +26,8 @@ function createWindow() {
 
     // and load the index.html of the app.
     if (!app.isPackaged) {
-        // mainWindow.loadURL('http://localhost:3000')
-        mainWindow.loadFile(path.join(__dirname, 'build/index.html'))
+        mainWindow.loadURL('http://localhost:3000')
+        // mainWindow.loadFile(path.join(__dirname, 'build/index.html'))
     } else {
         mainWindow.loadFile(path.join(__dirname, 'build/index.html'))
     }
