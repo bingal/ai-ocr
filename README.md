@@ -28,7 +28,7 @@ ai-ocr
 
 ### 3. 软件界面
 
-![世界时区分布图](/assets/1665395619954.jpg#pic_center)
+![软件界面](/assets/1665395619954.jpg#pic_center)
 
 ### 4. 功能简介
 
